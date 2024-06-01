@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EsTacnaTest
-build_property.ProjectDir = C:\Users\JPazo\Downloads\EsTacna-main\EsTacnaTest\
+build_property.ProjectDir = D:\Sistemas\11vo\Cs2\Despliegue\Despliegue-Estacna-master\WebApp EsTacna\EsTacnaTest\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
