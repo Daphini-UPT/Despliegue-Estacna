@@ -1,50 +1,58 @@
 ﻿using EsTacna.Models;
 
+/**
+* Interface para el repositorio de EPS.
+*/
+
 namespace EsTacna.Repositories
 {
-    /// <summary>
-    /// Define la interfaz para el repositorio de Entidades Promotoras de Salud (EPS).
-    /// </summary>
     public interface EpsRepository
     {
-
-        /// <summary>
-        /// Busca una EPS por su ID.
-        /// </summary>
-        /// <param name="epsId">ID de la EPS a buscar.</param>
-        /// <returns>La EPS correspondiente al ID proporcionado.</returns>
+        /**
+        * Busca un EPS por su ID.
+        * @param epsId ID del EPS.
+        * @return Objeto Ep correspondiente al ID del EPS.
+        */
         Ep BuscarId(int epsId);
 
-        /// <summary>
-        /// Lista todas las EPS almacenadas.
-        /// </summary>
-        /// <returns>Una lista de objetos EPS.</returns>
+        /**
+        * Lista todos los EPS.
+        * @return Lista de objetos Ep.
+        */
         List<Ep> Listar();
     }
 
-    /// <summary>
-    /// Implementación del repositorio de Entidades Promotoras de Salud (EPS).
-    /// </summary>
+    /**
+    * Implementación del repositorio de EPS.
+    */
     public class EpsRepositoryImpl : EpsRepository
     {
+        /** Contexto de base de datos de EsTacna */
         private readonly EsTacnaContext _dbContext;
 
-        /// <summary>
-        /// Constructor de la clase EpRepositoryimpl.
-        /// </summary>
-        /// <param name="dbContext">Contexto de base de datos para acceder a las entidades.</param>
+        /**
+        * Constructor que inicializa el contexto de base de datos.
+        * @param dbContext Contexto de base de datos de EsTacna.
+        */
         public EpsRepositoryImpl(EsTacnaContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        /// <inheritdoc />
+        /**
+        * Busca un EPS por su ID.
+        * @param epsId ID del EPS.
+        * @return Objeto Ep correspondiente al ID del EPS.
+        */
         public Ep BuscarId(int epsId)
         {
             Ep objEps = new Ep();
             try
             {
+                /** Consulta los datos de Ep en la base de datos */
                 var epsDatos = from datos in _dbContext.Eps select datos;
+
+                /** Filtra por el ID del EPS y obtiene el primer resultado */
                 objEps = epsDatos.Where(e => e.Id == epsId).FirstOrDefault();
             }
             catch (Exception ex)
@@ -54,18 +62,23 @@ namespace EsTacna.Repositories
             return objEps;
         }
 
-        /// <inheritdoc />
+        /**
+        * Lista todos los EPS.
+        * @return Lista de objetos Ep.
+        */
         public List<Ep> Listar()
         {
             List<Ep> listEps = new List<Ep>();
             try
             {
+                /** Consulta todos los datos de Ep en la base de datos */
                 var epsDatos = from datos in _dbContext.Eps select datos;
+
+                /** Convierte la consulta en una lista */
                 listEps = epsDatos.ToList();
             }
             catch (Exception ex)
             {
-                // Manejo de excepciones
                 throw;
             }
             return listEps;

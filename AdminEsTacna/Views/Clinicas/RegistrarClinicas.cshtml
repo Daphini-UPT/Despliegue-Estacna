@@ -1,0 +1,53 @@
+﻿@model AdminEsTacna.Models.EstablecimientoSalud
+@{
+    ViewData["Title"] = "Registrar Clinica";
+    List<AdminEsTacna.Models.EstablecimientoSalud> clinicas = ViewBag.Clinica;
+}
+
+<div class=" row justify-content-center">
+    <div class="col-lg-6">
+        <h1 class="text-center fw-bold mb-4" style="color:#287D97">Registrar Clinica</h1>
+        <form asp-action="RegistrarClinicas">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="@Model.Id" />
+            <div class="form-group mb-3">
+                <label asp-for="@Model.Nombre" class="control-label" style="color:#287D97"></label>
+                <input asp-for="@Model.Nombre" class="form-control" />
+                <span asp-validation-for="@Model.Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="@Model.Ciudad" class="control-label" style="color:#287D97"></label>
+                <input asp-for="@Model.Ciudad" class="form-control" />
+                <span asp-validation-for="@Model.Ciudad" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="@Model.Direccion" class="control-label" style="color:#287D97"></label>
+                <input asp-for="@Model.Direccion" class="form-control" />
+                <span asp-validation-for="@Model.Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="@Model.Longitud" class="control-label" style="color:#287D97"></label>
+                <input asp-for="@Model.Longitud" class="form-control" />
+                <span asp-validation-for="@Model.Longitud" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="@Model.Latitud" class="control-label" style="color:#287D97"></label>
+                <input asp-for="@Model.Latitud" class="form-control" />
+                <span asp-validation-for="@Model.Latitud" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="@Model.Descripcion" class="control-label" style="color:#287D97"></label>
+                <input asp-for="@Model.Descripcion" class="form-control" />
+                <span asp-validation-for="@Model.Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="@Model.Imagen" class="control-label" style="color:#287D97"></label>
+                <input asp-for="@Model.Imagen" class="form-control" />
+                <span asp-validation-for="@Model.Imagen" class="text-danger"></span>
+            </div>
+            <div class="text-center form-group gap-2">
+                <input type="submit" value="Registrar" class="btn btn-login" />
+            </div>
+        </form>
+    </div>
+</div>

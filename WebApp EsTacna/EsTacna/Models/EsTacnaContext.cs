@@ -4,33 +4,70 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EsTacna.Models;
 
+/**
+* Contexto de base de datos para la aplicación EsTacna.
+*/
+
 public partial class EsTacnaContext : DbContext
 {
+    /**
+    * Constructor por defecto del contexto de base de datos.
+    */
     public EsTacnaContext()
     {
     }
 
+    /**
+    * Constructor que recibe opciones de configuración para el contexto de base de datos.
+    * @param options Opciones de configuración del contexto.
+    */
     public EsTacnaContext(DbContextOptions<EsTacnaContext> options)
         : base(options)
     {
     }
 
+    /**
+    * Conjunto de entidades de tipo Busquedum en la base de datos.
+    */
     public virtual DbSet<Busquedum> Busqueda { get; set; }
 
+    /**
+    * Conjunto de entidades de tipo Eps en la base de datos.
+    */
     public virtual DbSet<Ep> Eps { get; set; }
 
+    /**
+    * Conjunto de entidades de tipo EpsEstablecimientoSalud en la base de datos.
+    */
     public virtual DbSet<EpsEstablecimientoSalud> EpsEstablecimientoSaluds { get; set; }
 
+    /**
+    * Conjunto de entidades de tipo EstablecimientoSalud en la base de datos.
+    */
     public virtual DbSet<EstablecimientoSalud> EstablecimientoSaluds { get; set; }
 
+    /**
+    * Conjunto de entidades de tipo Usuario en la base de datos.
+    */
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
+    /**
+    * Conjunto de entidades de tipo Valoracion en la base de datos.
+    */
     public virtual DbSet<Valoracion> Valoracions { get; set; }
 
+    /**
+    * Configuración de la conexión a la base de datos y el modelo de datos.
+    * @param optionsBuilder Constructor de opciones de configuración del contexto.
+    */
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=tcp:estacna.database.windows.net,1433;Initial Catalog=EsTacna;Persist Security Info=False;User ID=jpazos06;Password=upt2024!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
+    /**
+    * Configuración de las relaciones y restricciones entre las entidades del modelo de datos.
+    * @param modelBuilder Constructor de modelo de entidades.
+    */
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Busquedum>(entity =>
@@ -174,5 +211,9 @@ public partial class EsTacnaContext : DbContext
         OnModelCreatingPartial(modelBuilder);
     }
 
+    /**
+    * Método parcial para configuración adicional del modelo de entidades.
+    * @param modelBuilder Constructor de modelo de entidades.
+    */
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

@@ -9,63 +9,63 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = EsTacna
 build_property.RootNamespace = EsTacna
-build_property.ProjectDir = D:\Sistemas\11vo\Cs2\Despliegue\Despliegue-Estacna-master\WebApp EsTacna\EsTacna\
+build_property.ProjectDir = C:\Users\JPazo\Downloads\Construccion de Software II - Cambio de Codigo\WebApp EsTacna\EsTacna\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Sistemas\11vo\Cs2\Despliegue\Despliegue-Estacna-master\WebApp EsTacna\EsTacna
+build_property.MSBuildProjectDirectory = C:\Users\JPazo\Downloads\Construccion de Software II - Cambio de Codigo\WebApp EsTacna\EsTacna
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Sistemas/11vo/Cs2/Despliegue/Despliegue-Estacna-master/WebApp EsTacna/EsTacna/Views/EstablecimientoSalud/Buscar.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWJsZWNpbWllbnRvU2FsdWRcQnVzY2FyLmNzaHRtbA==
+[C:/Users/JPazo/Downloads/Construccion de Software II - Cambio de Codigo/WebApp EsTacna/EsTacna/Views/Clinica/Buscar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljYVxCdXNjYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Sistemas/11vo/Cs2/Despliegue/Despliegue-Estacna-master/WebApp EsTacna/EsTacna/Views/EstablecimientoSalud/Clinicas.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWJsZWNpbWllbnRvU2FsdWRcQ2xpbmljYXMuY3NodG1s
+[C:/Users/JPazo/Downloads/Construccion de Software II - Cambio de Codigo/WebApp EsTacna/EsTacna/Views/Clinica/Clinicas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljYVxDbGluaWNhcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Sistemas/11vo/Cs2/Despliegue/Despliegue-Estacna-master/WebApp EsTacna/EsTacna/Views/EstablecimientoSalud/Detalle.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXN0YWJsZWNpbWllbnRvU2FsdWRcRGV0YWxsZS5jc2h0bWw=
+[C:/Users/JPazo/Downloads/Construccion de Software II - Cambio de Codigo/WebApp EsTacna/EsTacna/Views/Clinica/Detalle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljYVxEZXRhbGxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Sistemas/11vo/Cs2/Despliegue/Despliegue-Estacna-master/WebApp EsTacna/EsTacna/Views/Home/Index.cshtml]
+[C:/Users/JPazo/Downloads/Construccion de Software II - Cambio de Codigo/WebApp EsTacna/EsTacna/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Sistemas/11vo/Cs2/Despliegue/Despliegue-Estacna-master/WebApp EsTacna/EsTacna/Views/Home/Privacy.cshtml]
+[C:/Users/JPazo/Downloads/Construccion de Software II - Cambio de Codigo/WebApp EsTacna/EsTacna/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Sistemas/11vo/Cs2/Despliegue/Despliegue-Estacna-master/WebApp EsTacna/EsTacna/Views/Login/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
+[C:/Users/JPazo/Downloads/Construccion de Software II - Cambio de Codigo/WebApp EsTacna/EsTacna/Views/IniciarSesion/IniciarSesion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5pY2lhclNlc2lvblxJbmljaWFyU2VzaW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Sistemas/11vo/Cs2/Despliegue/Despliegue-Estacna-master/WebApp EsTacna/EsTacna/Views/Shared/Error.cshtml]
+[C:/Users/JPazo/Downloads/Construccion de Software II - Cambio de Codigo/WebApp EsTacna/EsTacna/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Sistemas/11vo/Cs2/Despliegue/Despliegue-Estacna-master/WebApp EsTacna/EsTacna/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/JPazo/Downloads/Construccion de Software II - Cambio de Codigo/WebApp EsTacna/EsTacna/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Sistemas/11vo/Cs2/Despliegue/Despliegue-Estacna-master/WebApp EsTacna/EsTacna/Views/Usuario/Perfil.cshtml]
+[C:/Users/JPazo/Downloads/Construccion de Software II - Cambio de Codigo/WebApp EsTacna/EsTacna/Views/Usuario/Perfil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xQZXJmaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Sistemas/11vo/Cs2/Despliegue/Despliegue-Estacna-master/WebApp EsTacna/EsTacna/Views/Usuario/Registrar.cshtml]
+[C:/Users/JPazo/Downloads/Construccion de Software II - Cambio de Codigo/WebApp EsTacna/EsTacna/Views/Usuario/Registrar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xSZWdpc3RyYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Sistemas/11vo/Cs2/Despliegue/Despliegue-Estacna-master/WebApp EsTacna/EsTacna/Views/_ViewImports.cshtml]
+[C:/Users/JPazo/Downloads/Construccion de Software II - Cambio de Codigo/WebApp EsTacna/EsTacna/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Sistemas/11vo/Cs2/Despliegue/Despliegue-Estacna-master/WebApp EsTacna/EsTacna/Views/_ViewStart.cshtml]
+[C:/Users/JPazo/Downloads/Construccion de Software II - Cambio de Codigo/WebApp EsTacna/EsTacna/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Sistemas/11vo/Cs2/Despliegue/Despliegue-Estacna-master/WebApp EsTacna/EsTacna/Views/Shared/_Layout.cshtml]
+[C:/Users/JPazo/Downloads/Construccion de Software II - Cambio de Codigo/WebApp EsTacna/EsTacna/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ygokjd6oqb

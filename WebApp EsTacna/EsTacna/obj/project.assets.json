@@ -4149,23 +4149,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {},
+    "C:\\Users\\JPazo\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Sistemas\\11vo\\Cs2\\Despliegue\\Despliegue-Estacna-master\\WebApp EsTacna\\EsTacna\\EsTacna.csproj",
+      "projectUniqueName": "C:\\Users\\JPazo\\Downloads\\Construccion de Software II - Cambio de Codigo\\WebApp EsTacna\\EsTacna\\EsTacna.csproj",
       "projectName": "EsTacna",
-      "projectPath": "D:\\Sistemas\\11vo\\Cs2\\Despliegue\\Despliegue-Estacna-master\\WebApp EsTacna\\EsTacna\\EsTacna.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "D:\\Sistemas\\11vo\\Cs2\\Despliegue\\Despliegue-Estacna-master\\WebApp EsTacna\\EsTacna\\obj\\",
+      "projectPath": "C:\\Users\\JPazo\\Downloads\\Construccion de Software II - Cambio de Codigo\\WebApp EsTacna\\EsTacna\\EsTacna.csproj",
+      "packagesPath": "C:\\Users\\JPazo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\JPazo\\Downloads\\Construccion de Software II - Cambio de Codigo\\WebApp EsTacna\\EsTacna\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\JPazo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4231,7 +4231,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

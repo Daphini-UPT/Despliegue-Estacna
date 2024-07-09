@@ -54,10 +54,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <a class="nav-link" style="color:#287D97" href="~/EstablecimientoSalud/Clinicas">Clinicas</a>
+                    <a class="nav-link" style="color:#287D97" href="~/Clinica/Clinicas">Clinicas</a>
                     <a class="nav-link" style="color:#287D97" href="#Nosotros">Sobre Nosotros</a>
-                    <a class="nav-link" style="color:#287D97" href="#map">Ubicacion</a>
-                    <a class="nav-link" style="color:#287D97; margin-inline-end:600px" href="#">Contactanos</a>
+                    <a class="nav-link" style="color:#287D97; margin-inline-end:600px" href="#map">Ubicacion</a>
                     @if (HttpContextAccessor.HttpContext.Session.GetString("UsuarioNombre") != null)
                     {
                     }
@@ -70,11 +69,11 @@
                                 <a class="nav-link" style="color:#287D97" href="~/Usuario/Perfil?idUsuario=@HttpContextAccessor.HttpContext.Session.GetString("UsuarioId")">
                             @HttpContextAccessor.HttpContext.Session.GetString("UsuarioNombre")
                                 </a>
-                                <a class="nav-link" style="color:#287D97" href="~/Login/Logout" role="button">Cerrar Sesion</a>
+                                <a class="nav-link" style="color:#287D97" href="~/IniciarSesion/Logout" role="button">Cerrar Sesion</a>
                     }
                     else
                     {
-                                <a class="nav-link" style="color:#287D97" href="~/Login/Login">Iniciar Sesion</a>
+                        <a class="nav-link" style="color:#287D97" href="~/IniciarSesion/IniciarSesion">Iniciar Sesion</a>
                     }
 
                 </ul>

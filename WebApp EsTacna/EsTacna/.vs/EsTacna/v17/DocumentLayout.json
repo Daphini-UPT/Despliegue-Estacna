@@ -1,7 +1,20 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Sistemas\\11vo\\Cs2\\Despliegue\\Despliegue-Estacna-master\\WebApp EsTacna\\EsTacna\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\JPazo\\Downloads\\Construccion de Software II - Cambio de Codigo\\WebApp EsTacna\\EsTacna\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{55208A6E-4B76-484D-9E58-62D5BA19C618}|EsTacna.csproj|c:\\users\\jpazo\\downloads\\construccion de software ii - cambio de codigo\\webapp estacna\\estacna\\controllers\\iniciarsesioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55208A6E-4B76-484D-9E58-62D5BA19C618}|EsTacna.csproj|solutionrelative:controllers\\iniciarsesioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55208A6E-4B76-484D-9E58-62D5BA19C618}|EsTacna.csproj|c:\\users\\jpazo\\downloads\\construccion de software ii - cambio de codigo\\webapp estacna\\estacna\\views\\clinica\\detalle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{55208A6E-4B76-484D-9E58-62D5BA19C618}|EsTacna.csproj|solutionrelative:views\\clinica\\detalle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55208A6E-4B76-484D-9E58-62D5BA19C618}|EsTacna.csproj|c:\\users\\jpazo\\downloads\\construccion de software ii - cambio de codigo\\webapp estacna\\estacna\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{55208A6E-4B76-484D-9E58-62D5BA19C618}|EsTacna.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,19 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IniciarSesionController.cs",
+              "DocumentMoniker": "C:\\Users\\JPazo\\Downloads\\Construccion de Software II - Cambio de Codigo\\WebApp EsTacna\\EsTacna\\Controllers\\IniciarSesionController.cs",
+              "RelativeDocumentMoniker": "Controllers\\IniciarSesionController.cs",
+              "ToolTip": "C:\\Users\\JPazo\\Downloads\\Construccion de Software II - Cambio de Codigo\\WebApp EsTacna\\EsTacna\\Controllers\\IniciarSesionController.cs",
+              "RelativeToolTip": "Controllers\\IniciarSesionController.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-07T02:55:45.5Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Detalle.cshtml",
+              "DocumentMoniker": "C:\\Users\\JPazo\\Downloads\\Construccion de Software II - Cambio de Codigo\\WebApp EsTacna\\EsTacna\\Views\\Clinica\\Detalle.cshtml",
+              "RelativeDocumentMoniker": "Views\\Clinica\\Detalle.cshtml",
+              "ToolTip": "C:\\Users\\JPazo\\Downloads\\Construccion de Software II - Cambio de Codigo\\WebApp EsTacna\\EsTacna\\Views\\Clinica\\Detalle.cshtml",
+              "RelativeToolTip": "Views\\Clinica\\Detalle.cshtml",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-07T02:49:09.415Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\JPazo\\Downloads\\Construccion de Software II - Cambio de Codigo\\WebApp EsTacna\\EsTacna\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\JPazo\\Downloads\\Construccion de Software II - Cambio de Codigo\\WebApp EsTacna\\EsTacna\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAAD0AAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-07T02:47:58.898Z",
+              "EditorCaption": ""
             }
           ]
         }

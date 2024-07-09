@@ -1,4 +1,4 @@
-﻿@model EsTacna.ViewModels.EstablecimientoSaludViewModel;
+﻿@model EsTacna.ViewModels.ClinicaViewModel;
 @using Microsoft.AspNetCore.Http;
 @inject IHttpContextAccessor HttpContextAccessor
 @{
@@ -17,7 +17,7 @@
                 mapId: '54cee5be7cf638f8',
                 center: tacna,
             });
-        @foreach (var items in Model.listEstablecimiento)
+        @foreach (var items in Model.listClinica)
         {
             @Html.Raw(
                      // Lost marcadores, posicionados en los establecimientos de Salud
@@ -37,7 +37,7 @@
 }
 @section scriptsBody {
     <!-- Script para llamar a la API de Google Maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbRC-cA8A-wCyTJoPe2wLtOk1_9aPzVCA&v=beta&callback=initMap&v=weekly"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChAH9wpFyxHUnjj_1wYVp5ktGZE2InGZU&v=beta&callback=initMap&v=weekly"
             defer></script>
 }
 <!--ComboBox-->
@@ -60,7 +60,7 @@
         <!--Barra de búsqueda-->
         <div id="SearchBar" class="d-flex justify-content-center">
             <div class="rounded-pill bg-white p-2 col-md-10">
-                @using (Html.BeginForm("Buscar", "EstablecimientoSalud", FormMethod.Post))
+                @using (Html.BeginForm("Buscar", "Clinica", FormMethod.Post))
                 {
                     <div class="d-flex">
                         @Html.DropDownList("epsid", selectList, new { @class = "form-control me-2 bg-light rounded-pill", required = "required" })
@@ -87,7 +87,7 @@
         <h1 class="fw-bold">Sugerencias</h1>
 
         <div class="row">
-            @foreach (var item in Model.RecoEstablecimiento)
+            @foreach (var item in Model.recoClinica)
             {
                 <div class="col-md-4">
                     <div class="card">

@@ -1,0 +1,143 @@
+﻿@using Microsoft.AspNetCore.Http;
+        @inject IHttpContextAccessor HttpContextAccessor
+@{
+    Layout = null;
+    string controlador = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Página Principal</title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-multiselect.css" rel="stylesheet" />
+
+    <link href="~/css/estilos.css" rel="stylesheet" />
+    <link href="~/css/login.css" rel="stylesheet" />
+    <!--HighChart-->
+    <link href="~/lib/bootstrap/dist/css/highcharts.css" rel="stylesheet" />
+    <!--Datatables-->
+    <link href="~/DataTables/datatables.min.css" rel="stylesheet" />
+    <link href="~/DataTables/DataTables-1.12.1/css/dataTables.semanticui.min.css" rel="stylesheet" />
+    <link href="~/DataTables/DataTables-1.12.1/css/dataTables.foundation.min.css" rel="stylesheet" />
+
+    <!--Bootstrap-->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!--JQuery-->
+    <script src="~/lib/jquery/dist/jquery-3.6.1.min.js"></script>
+    <!--HighChart-->
+    <script src="~/lib/jquery/dist/highcharts.js"></script>
+    <script src="~/lib/jquery/dist/highcharts-3d.js"></script>
+    <script src="~/lib/jquery/dist/highcharts-more.js"></script>
+    <script src="~/lib/jquery/dist/exporting.js"></script>
+    <script src="~/lib/jquery/dist/offline-exporting.js"></script>
+    <!--Rating-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link href="~/css/star-rating.min.css" rel="stylesheet" />
+    <script src="~/js/star-rating.min.js"></script>
+    <link href="~/themes/krajee-fas/theme.min.css" rel="stylesheet" />
+    <script src="~/themes/krajee-fas/theme.min.js"></script>
+    <script src="~/lib/bootstrap/dist/css/bootstrap-multiselect.js"></script>
+
+    @RenderSection("scripts", required: false)
+    @RenderSection("style", required: false)
+</head>
+<body class="" style="background-color:#F6F7F8">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#A8D1E3">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="~/Home/Index" style="color:#6AB6D2">EsTacna</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    @if (HttpContextAccessor.HttpContext.Session.GetString("UsuarioNombre") != null)
+                    {
+                    }
+                    else
+                    {
+                        <a class="nav-link" style="color:#287D97" href="#">Invitado</a>
+                    }
+                    @if (@HttpContextAccessor.HttpContext.Session.GetString("UsuarioNombre") != null)
+                    {
+                        <a class="nav-link" style="color:#287D97" href="#">
+                            @HttpContextAccessor.HttpContext.Session.GetString("UsuarioNombre")
+                        </a>
+                        <a class="nav-link" style="color:#287D97" href="~/Home/CerrarSesion" role="button">Cerrar Sesion</a>
+                    }
+                    else
+                    {
+                        <a class="nav-link" style="color:#287D97" href="~/Home/Index">Iniciar Sesion</a>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            @if (HttpContextAccessor.HttpContext.Session.GetString("UsuarioNombre") != null)
+            {
+                <div class="col-md-2 vh-100" style="background-color:#A8D1E3">
+                    <div class="nav flex-column nav-pills nav-fill text-center">
+                        <hr />
+                        <a class="nav-link text-light" style="background-color:#A8D1E3"  href="~/Eps/VerEps">EPS</a>
+                        <hr />
+                        <a class="nav-link text-light" style="background-color:#A8D1E3"  href="~/Clinicas/VerClinicas">Clínicas</a>
+                        <hr />
+                        <a class="nav-link text-light" style="background-color:#A8D1E3"  href="~/Usuario/VerUsuarios">Usuarios</a>
+                        <hr />
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    @RenderBody()
+                </div>
+            }
+            else
+            {
+                <div class="col-md-12">
+                    @RenderBody()
+                </div>
+            }
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var navLinks = document.querySelectorAll('.nav-link');
+
+            navLinks.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    // Remover la clase 'active' de todos los enlaces
+                    navLinks.forEach(function (el) {
+                        el.style.backgroundColor = '#A8D1E3';
+                    });
+
+                    // Agregar la clase 'active' al enlace clicado
+                    this.style.backgroundColor = '#287D97';
+                });
+            });
+        });
+    </script>
+
+    <div>
+        @RenderBody()
+    </div>
+    <!--Mapa de Google-->
+    @RenderSection("scriptsBody", required: false)
+
+    <!--DataTables-->
+    <script src="~/DataTables/datatables.min.js"></script>
+    <!--ResponseModel-->
+    <script src="~/lib/jquery/dist/ini.js"></script>
+    <script src="~/lib/jquery/dist/jquery.form.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

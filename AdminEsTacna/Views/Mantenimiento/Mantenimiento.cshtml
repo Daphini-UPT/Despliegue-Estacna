@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Mantenimiento";
+}
+
+<body style="padding:0; margin:0;">
+    <img src="assets/Wave.png" alt="" />
+    <h1 style="color:#287D97" align="center">Mantenimiento</h1>
+    <br />
+    <!-- Mensajes de éxito y error -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+</body>

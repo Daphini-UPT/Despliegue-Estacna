@@ -4,9 +4,12 @@ using EsTacna.Repositories;
 using EsTacna.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Moq;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel.DataCollector.InProcDataCollector;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EsTacnaTest
 {
@@ -71,7 +74,8 @@ namespace EsTacnaTest
         }
     }
 
-    public class UsuarioTest
+    //PRUEBAS UNITARIAS
+    public class UsuarioUnitTest
     {
         private readonly UsuarioRepositoryImpl objUsuarioRepo = new UsuarioRepositoryImpl(new EsTacnaContext());
 
@@ -92,13 +96,13 @@ namespace EsTacnaTest
             var usuario = objUsuarioRepo.BuscarId(2);
             int usuarioid = usuario.Id;
 
-            EstablecimientoSaludViewModel objEstablecimientoVm = new EstablecimientoSaludViewModel();
-            EstablecimientoResponse objEstablecimientoResponse = new EstablecimientoResponse();
-            objEstablecimientoVm.RecoEstablecimiento = objEstablecimientoResponse.GetEstablecimiento(usuarioid).Result;
+            ClinicaViewModel objEstablecimientoVm = new ClinicaViewModel();
+            ClinicaResponse objEstablecimientoResponse = new ClinicaResponse();
+            objEstablecimientoVm.recoClinica = objEstablecimientoResponse.GetClinica(usuarioid).Result;
 
             // Assert
             Assert.Equal(2, usuarioid);
-            Assert.True(objEstablecimientoVm.RecoEstablecimiento.Count > 0);
+            Assert.True(objEstablecimientoVm.recoClinica.Count > 0);
         }
 
         /*Prueba Unitaria
@@ -157,7 +161,7 @@ namespace EsTacnaTest
             logUsuario.Session.SetString("UsuarioNombre", "NombreUsuario");
             logUsuario.Session.SetString("UsuarioId", "1");
 
-            var controller = new LoginController()
+            var controller = new IniciarSesionController()
             {
                 ControllerContext = new ControllerContext()
                 {
@@ -200,7 +204,7 @@ namespace EsTacnaTest
          CP-16 Editar Perfil CP01*/
 
         [Fact]
-        public void ModificarPerfilTest()
+        public void EditarPerfilTest()
         {
             // Arrange
             var usuario = new Usuario
@@ -217,6 +221,106 @@ namespace EsTacnaTest
 
             // Assert
             Assert.NotEqual(0, usuario.Id);
+        }
+    }
+
+    //PRUEBAS DE INTEGRACIÓN
+    public class UsuarioIntegrationTest
+    {
+        private readonly UsuarioRepositoryImpl objUsuarioRepo = new UsuarioRepositoryImpl(new EsTacnaContext());
+
+        /*Prueba de Integración
+         * CP-09 Registrar Usuario CP03
+         * CP-12 Iniciar Sesion CP03
+         * CP-15 Visualizar Perfil CP03
+         * CP-18 Editar Perfil CP03
+         * CP-21 Cerrar sesion CP03*/
+        [Fact]
+        public void TestIntegracionUsuarioNuevo()
+        {
+            
+            // Arrange
+            var usuario = new Usuario
+            {
+                Nombre = "NUEVO",
+                Apellido = "USUARIO",
+                Email = "nuevo@usuario.pe",
+                Contrasena = "12345678",
+            };
+
+            var usuarioEditar = new Usuario
+            {
+                Nombre = "NUEVO",
+                Apellido = "USUARIO",
+                Email = "nuevo@usuario.pe",
+                Contrasena = "12345678",
+            };
+
+            var logUsuario = new DefaultHttpContext();
+            logUsuario.Session = new MockHttpSession();
+            logUsuario.Session.SetString("NUEVO", "USUARIO");
+            logUsuario.Session.SetString("UsuarioId", "1");
+            var controller = new IniciarSesionController()
+            {
+                ControllerContext = new ControllerContext()
+                {
+                    HttpContext = logUsuario
+                }
+            };
+
+            // Act
+            objUsuarioRepo.Registrar(usuario);
+            var resultado = objUsuarioRepo.Login(usuario.Email, usuario.Contrasena); objUsuarioRepo.BuscarId(usuario.Id); objUsuarioRepo.Registrar(usuarioEditar); controller.Logout();
+
+
+            // Assert
+            Assert.Equal(usuario.Nombre, resultado.Nombre);
+            Assert.Equal(usuario.Apellido, resultado.Apellido);
+            Assert.Equal(usuario.Email, resultado.Email);
+            Assert.Equal(usuarioEditar.Contrasena, resultado.Contrasena);
+            Assert.Empty(logUsuario.Session.Keys);
+        }
+
+        /*Prueba de Integración
+         * CP-12 Iniciar sesión CP03
+         * CP-03 Visualizar Clínicas Recomendadas CP03
+         * CP-21 Cerrar sesión CP03*/
+        [Fact]
+        public void TestIntegracionUsuario()
+        {
+            // Arrange
+            var expectedusuario = new Usuario
+            {
+                Email = "alevaldiviag@upt.pe",
+                Contrasena = "123456"
+            };
+
+            var logUsuario = new DefaultHttpContext();
+            logUsuario.Session = new MockHttpSession();
+            logUsuario.Session.SetString("ALEJANDRA MARIA", "VALDIVIA GUZMAN");
+            logUsuario.Session.SetString("UsuarioId", "2");
+            var controller = new IniciarSesionController()
+            {
+                ControllerContext = new ControllerContext()
+                {
+                    HttpContext = logUsuario
+                }
+            };
+
+            var resultado = objUsuarioRepo.Login(expectedusuario.Email, expectedusuario.Contrasena);
+
+            var usuario = objUsuarioRepo.BuscarId(2);
+            int usuarioid = usuario.Id;
+
+            ClinicaViewModel objEstablecimientoVm = new ClinicaViewModel();
+            ClinicaResponse objEstablecimientoResponse = new ClinicaResponse();
+            objEstablecimientoVm.recoClinica = objEstablecimientoResponse.GetClinica(usuarioid).Result;
+            controller.Logout();
+
+            // Assert
+            Assert.Equal(2, usuarioid);
+            Assert.True(objEstablecimientoVm.recoClinica.Count > 0);
+            Assert.Empty(logUsuario.Session.Keys);
         }
     }
 }

@@ -1,0 +1,54 @@
+﻿@model List<AdminEsTacna.Models.EstablecimientoSalud>;
+@{
+    ViewData["Title"] = "Mantenimiento de Clínicas";
+}
+
+<body style="padding:0; margin:0;">
+    <h1 style="color:#287D97" align="center">Mantenimiento de Clínicas</h1>
+    <div class="text-center my-3">
+        <a class="btn btn-success" href="~/Clinicas/RegistrarClinicas">Agregar Nueva Clínica</a>
+    </div>
+    </br>
+    <!-- Mensajes de éxito y error -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Ciudad</th>
+                <th>Dirección</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var clinica in Model)
+            {
+                <tr>
+                    <td>@clinica.Id</td>
+                    <td>@clinica.Nombre</td>
+                    <td>@clinica.Ciudad</td>
+                    <td>@clinica.Direccion</td>
+                    <td>
+                        <a class="btn btn-warning btn-sm" href="~/Clinicas/Editar?clinicaId=@clinica.Id">Modificar</a>
+                        <form action="~/Clinicas/Borrar" method="post" style="display:inline;">
+                            <input type="hidden" name="clinicaId" onclick="return confirm('¿Está seguro de que desea borrar esta clínica?');" value="@clinica.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

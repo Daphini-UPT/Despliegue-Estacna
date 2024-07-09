@@ -1,47 +1,49 @@
 ﻿using EsTacna.Models;
 using Microsoft.EntityFrameworkCore;
 
+/**
+* Interface para el repositorio de valoraciones.
+*/
+
 namespace EsTacna.Repositories
 {
-    /// <summary>
-    /// Interfaz para el repositorio de valoraciones.
-    /// </summary>
     public interface IValoracionRepository
     {
-        /// <summary>
-        /// Guarda una nueva valoración.
-        /// </summary>
-        /// <param name="objValoracion">La valoración a guardar.</param>
+        /**
+        * Guarda una nueva valoración.
+        * @param objValoracion Objeto Valoracion a guardar.
+        */
         void Guardar(Valoracion objValoracion);
 
-        /// <summary>
-        /// Lista todas las valoraciones asociadas a un establecimiento por su ID.
-        /// </summary>
-        /// <param name="establecimientoId">ID del establecimiento.</param>
-        /// <returns>Una lista de objetos Valoracion.</returns>
-        List<Valoracion> ListarPorEstablecimientoId(int establecimientoId);
+        /**
+        * Lista las valoraciones por el ID de la clinica.
+        * @param clinicaId ID de la clinica.
+        * @return Lista de valoraciones correspondientes a la clinica proporcionada.
+        */
+        List<Valoracion> ListarPorClinicaId(int clinicaId);
     }
 
-    /// <summary>
-    /// Implementación del repositorio de valoraciones.
-    /// </summary>
+    /**
+    * Implementación del repositorio de valoraciones.
+    */
     public class ValoracionRepositoryImpl : IValoracionRepository
     {
+        /** Contexto de base de datos de EsTacna */
         private readonly EsTacnaContext _context;
 
-        /// <summary>
-        /// Constructor del repositorio de valoraciones.
-        /// </summary>
-        /// <param name="context">Contexto de la base de datos.</param>
+        /**
+        * Constructor que inicializa el contexto de base de datos.
+        * @param context Contexto de base de datos de EsTacna.
+        */
         public ValoracionRepositoryImpl(EsTacnaContext context)
         {
             _context = context;
         }
 
-        /// <summary>
-        /// Guarda una nueva valoración en la base de datos.
-        /// </summary>
-        /// <param name="objValoracion">La valoración a guardar.</param>
+        /**
+        * Guarda una nueva valoración.
+        * @param objValoracion Objeto Valoracion a guardar.
+        */
         public void Guardar(Valoracion objValoracion)
         {
             try
@@ -55,16 +57,16 @@ namespace EsTacna.Repositories
             }
         }
 
-        /// <summary>
-        /// Lista todas las valoraciones asociadas a un establecimiento por su ID.
-        /// </summary>
-        /// <param name="establecimientoId">ID del establecimiento.</param>
-        /// <returns>Una lista de objetos Valoracion.</returns>
-        public List<Valoracion> ListarPorEstablecimientoId(int establecimientoId)
+        /**
+        * Lista las valoraciones por el ID de la clinica.
+        * @param clinicaId ID de la clinica.
+        * @return Lista de valoraciones correspondientes a la clinica proporcionada.
+        */
+        public List<Valoracion> ListarPorClinicaId(int clinicaId)
         {
             try
             {
-                return _context.Valoracions.Include(valoraciones => valoraciones.Usuario).Where(v => v.EstablecimientoId == establecimientoId).ToList();
+                return _context.Valoracions.Include(valoraciones => valoraciones.Usuario).Where(v => v.EstablecimientoId == clinicaId).ToList();
             }
             catch (Exception ex)
             {

@@ -1,0 +1,50 @@
+﻿@model List<AdminEsTacna.Models.Usuario>;
+@{
+    ViewData["Title"] = "Mantenimiento de Usuarios";
+}
+
+<body style="padding:0; margin:0;">
+    <h1 style="color:#287D97" align="center">Mantenimiento de Usuarios</h1>
+    </br>
+    <!-- Mensajes de éxito y error -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Ciudad</th>
+                <th>Dirección</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model)
+            {
+                <tr>
+                    <td>@usuario.Id</td>
+                    <td>@usuario.Nombre</td>
+                    <td>@usuario.Apellido</td>
+                    <td>@usuario.Email</td>
+                    <td>
+                        <form action="~/Usuario/Borrar" method="post" style="display:inline;">
+                            <input type="hidden" name="usuarioId" onclick="return confirm('¿Está seguro de que desea borrar este usuario?');" value="@usuario.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

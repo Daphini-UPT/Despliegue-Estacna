@@ -1,48 +1,56 @@
 ﻿using EsTacna.Models;
 using Microsoft.EntityFrameworkCore;
 
+/**
+* Interface para el repositorio de búsquedas.
+*/
+
 namespace EsTacna.Repositories
 {
-    /// <summary>
-    /// Define la interfaz para el repositorio de búsquedas.
-    /// </summary>
     public interface BusquedaRepository
     {
-        /// <summary>
-        /// Registra una búsqueda en la base de datos.
-        /// </summary>
-        /// <param name="objBusqueda">Objeto Busquedum que se registrará.</param>
+        /**
+        * Registra una nueva búsqueda en el sistema.
+        * @param objBusqueda Objeto de búsqueda a registrar.
+        */
         void Registrar(Busquedum objBusqueda);
 
-        /// <summary>
-        /// Lista todas las búsquedas almacenadas en la base de datos.
-        /// </summary>
-        /// <returns>Lista de objetos Busquedum.</returns>
+        /**
+        * Lista todas las búsquedas registradas.
+        * @return Lista de objetos de búsqueda.
+        */
         List<Busquedum> ListarBusqueda();
     }
 
-    /// <summary>
-    /// Implementación del repositorio de búsquedas.
-    /// </summary>
+    /**
+    * Implementación del repositorio de búsquedas.
+    */
     public class BusquedaRepositoryImpl : BusquedaRepository
     {
+        /** Contexto de base de datos de EsTacna */
         private readonly EsTacnaContext _dbContext;
 
-        /// <summary>
-        /// Constructor de la clase BusquedaRepositoryimpl.
-        /// </summary>
-        /// <param name="dbContext">Contexto de base de datos para acceder a las entidades.</param>
+        /**
+        * Constructor que inicializa el contexto de base de datos.
+        * @param dbContext Contexto de base de datos de EsTacna.
+        */
         public BusquedaRepositoryImpl(EsTacnaContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        /// <inheritdoc />
+        /**
+        * Registra una nueva búsqueda en la base de datos.
+        * @param objBusqueda Objeto de búsqueda a registrar.
+        */
         public void Registrar(Busquedum objBusqueda)
         {
             try
             {
+                /** Establece el estado de la entrada de búsqueda como agregado */
                 _dbContext.Entry(objBusqueda).State = EntityState.Added;
+
+                /** Guarda los cambios en la base de datos */
                 _dbContext.SaveChanges();
             }
             catch (Exception ex)
@@ -51,18 +59,23 @@ namespace EsTacna.Repositories
             }
         }
 
-        /// <inheritdoc />
+        /**
+        * Lista todas las búsquedas registradas en la base de datos.
+        * @return Lista de objetos de búsqueda.
+        */
         public List<Busquedum> ListarBusqueda()
         {
             List<Busquedum> listBusqueda = new List<Busquedum>();
             try
             {
+                /** Consulta todas las entradas de búsqueda de la base de datos */
                 var busquedaDatos = from datos in _dbContext.Busqueda select datos;
+
+                /** Convierte los resultados de la consulta a una lista */
                 listBusqueda = busquedaDatos.ToList();
             }
             catch (Exception ex)
             {
-                // Manejo de excepciones
                 throw;
             }
             return listBusqueda;

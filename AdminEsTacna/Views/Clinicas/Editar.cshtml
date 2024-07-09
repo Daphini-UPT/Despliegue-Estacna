@@ -1,0 +1,118 @@
+﻿@model AdminEsTacna.Models.EstablecimientoSalud
+@{
+    ViewData["Title"] = "Editar Clinica";
+    List<AdminEsTacna.Models.EstablecimientoSalud> clinicas = ViewBag.Clinicas;
+}
+
+@section scripts{
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script>
+        async function initMap() {
+
+                const { Map, InfoWindow } = await google.maps.importLibrary("maps");
+                const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+                const initialLat = parseFloat('@Model.Latitud'.replace(',', '.'));
+                const initialLng = parseFloat('@Model.Longitud'.replace(',', '.'));
+
+            const map = new Map(document.getElementById('map'), {
+                center: { lat: initialLat, lng: initialLng },
+                zoom: 15,
+                mapId: '4504f8b37365c3d0',
+            });
+
+            const infoWindow = new InfoWindow();
+
+            const draggableMarker = new AdvancedMarkerElement({
+                map,
+                position: { lat: initialLat, lng: initialLng },
+                gmpDraggable: true,
+                title: "This marker is draggable.",
+            });
+
+            draggableMarker.addListener('dragend', (event) => {
+                const position = draggableMarker.position;
+                const lat = position.lat;
+                const lng = position.lng;
+                document.getElementById('latitudInput').value = lat.toFixed(6);
+                document.getElementById('longitudInput').value = lng.toFixed(6);
+                infoWindow.close();
+                infoWindow.setContent(`Pin dropped at: ${lat.toFixed(6)}, ${lng.toFixed(6)}`);
+                infoWindow.open(draggableMarker.map, draggableMarker);
+            });
+        }
+        window.initMap = initMap;
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChAH9wpFyxHUnjj_1wYVp5ktGZE2InGZU&callback=initMap"
+            defer></script>
+}
+
+@section style {
+    <style>
+        #map {
+            width: 100%;
+            height: 50vh
+        }
+    </style>
+}
+
+<div class=" row justify-content-center">
+    <div class="col-lg-6">
+        <h1 class="text-center fw-bold  mb-4" style="color:#287D97">CLINICA</h1>
+        <form asp-action="Editar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" value="@Model.Id" />
+            <div>
+                <center><img class="rounded-circle" src="@Model.Imagen" alt="Card image cap" height="250px" width="250px"></center>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Nombre" class="control-label" style="color:#287D97"></label>
+                <input asp-for="Nombre" value="@Model.Nombre" class="form-control" readonly />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Ciudad" class="control-label" style="color:#287D97"></label>
+                <input asp-for="Ciudad" value="@Model.Ciudad" class="form-control" readonly />
+                <span asp-validation-for="Ciudad" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Direccion" class="control-label" style="color:#287D97"></label>
+                <input id="direccionInput" asp-for="Direccion" value="@Model.Direccion" class="form-control" disabled />
+                <span asp-validation-for="Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Longitud" class="control-label" style="color:#287D97"></label>
+                <input id="longitudInput" asp-for="Longitud" value="@Model.Longitud" class="form-control" disabled />
+                <span asp-validation-for="Longitud" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Latitud" class="control-label" style="color:#287D97"></label>
+                <input id="latitudInput" asp-for="Latitud" value="@Model.Latitud" class="form-control" disabled />
+                <span asp-validation-for="Latitud" class="text-danger"></span>
+            </div>
+            <div id="map" class="form-group row gap-5 d-flex justify-content-between"></div>
+            <div class="form-group mb-3">
+                <label asp-for="Imagen" class="control-label" style="color:#287D97"></label>
+                <input id="imagenInput" asp-for="Imagen" value="@Model.Imagen" class="form-control" disabled />
+                <span asp-validation-for="Imagen" class="text-danger"></span>
+            </div>
+            <div class="form-group row gap-5 d-flex justify-content-between">
+                <a id="editarButton" class="btn btn-login" href="#" role="button" onclick="habilitarEdicion()">Editar</a>
+                <input id="guardarButton" type="submit" value="Guardar" class="btn-login" disabled />
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+<script>
+    function habilitarEdicion() {
+        var direccionInput = document.getElementById("direccionInput");
+        var imagenInput = document.getElementById("imagenInput");
+        var guardarButton = document.getElementById("guardarButton");
+
+        direccionInput.disabled = false;
+        imagenInput.disabled = false;
+        guardarButton.removeAttribute("disabled");
+    }
+</script>

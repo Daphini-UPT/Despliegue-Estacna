@@ -1,0 +1,55 @@
+﻿@model List<AdminEsTacna.Models.Ep>;
+@{
+    ViewData["Title"] = "Mantenimiento de Clínicas";
+}
+
+
+
+<body style="padding:0; margin:0;">
+    <h1 style="color:#287D97" align="center">Mantenimiento de EPS</h1>
+    <br />
+    <!-- Mensajes de éxito y error -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+    <div class="text-center my-3">
+        <a class="btn btn-success" href="~/Eps/RegistrarEps">Agregar Nueva EPS</a>
+    </div>
+    <div class="text-center my-3">
+        <a class="btn btn-success" href="~/Eps/AgregarClinica">Mantenimiento Clinica & EPS</a>
+    </div>
+    </br>
+    <table class="table table-striped table-bordered table-hover" align="center">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var eps in Model)
+            {
+                <tr>
+                    <td>@eps.Id</td>
+                    <td>@eps.Nombre</td>
+                    <td>
+                        <form action="~/Eps/Borrar" method="post" style="display:inline;">
+                            <input type="hidden" name="epsId" onclick="return confirm('¿Está seguro de que desea borrar esta EPS?');" value="@eps.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Borrar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>

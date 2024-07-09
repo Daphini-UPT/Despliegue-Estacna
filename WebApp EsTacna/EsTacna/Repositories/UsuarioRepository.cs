@@ -1,48 +1,57 @@
 ﻿using EsTacna.Models;
 using Microsoft.EntityFrameworkCore;
 
+/**
+* Interface para el repositorio de usuarios.
+*/
+
 namespace EsTacna.Repositories
 {
-    /// <summary>
-    /// Define la interfaz para el repositorio de usuarios.
-    /// </summary>
     public interface UsuarioRepository
     {
-        /// <summary>
-        /// Registra un usuario en la base de datos.
-        /// </summary>
-        /// <param name="objUsuario">Objeto Usuario que se registrará.</param>
+        /**
+        * Registra un nuevo usuario o actualiza uno existente.
+        * @param objUsuario Objeto Usuario a registrar o actualizar.
+        */
         void Registrar(Usuario objUsuario);
 
-        /// <summary>
-        /// Realiza el inicio de sesión de un usuario.
-        /// </summary>
-        /// <param name="usuarioCuenta">Nombre de usuario o correo electrónico.</param>
-        /// <param name="contrasenaCuenta">Contraseña del usuario.</param>
-        /// <returns>El objeto Usuario correspondiente al inicio de sesión.</returns>
+        /**
+        * Realiza el login de un usuario con su cuenta y contraseña.
+        * @param usuarioCuenta Correo electrónico del usuario.
+        * @param contrasenaCuenta Contraseña del usuario.
+        * @return Objeto Usuario correspondiente a la cuenta y contraseña proporcionadas.
+        */
         Usuario Login(string usuarioCuenta, string contrasenaCuenta);
 
-        /// <summary>
-        /// Busca un usuario por su ID.
-        /// </summary>
-        /// <param name="usuarioId">ID del usuario a buscar.</param>
-        /// <returns>El objeto Usuario correspondiente al ID proporcionado.</returns>
+        /**
+        * Busca un usuario por su ID.
+        * @param usuarioId ID del usuario.
+        * @return Objeto Usuario correspondiente al ID proporcionado.
+        */
         Usuario BuscarId(int usuarioId);
     }
 
-    /// <summary>
-    /// Implementación del repositorio de usuarios.
-    /// </summary>
+    /**
+    * Implementación del repositorio de usuarios.
+    */
     public class UsuarioRepositoryImpl : UsuarioRepository
     {
+        /** Contexto de base de datos de EsTacna */
         private readonly EsTacnaContext _dbContext;
 
+        /**
+        * Constructor que inicializa el contexto de base de datos.
+        * @param dbContext Contexto de base de datos de EsTacna.
+        */
         public UsuarioRepositoryImpl(EsTacnaContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        /// <inheritdoc />
+        /**
+        * Registra un nuevo usuario o actualiza uno existente.
+        * @param objUsuario Objeto Usuario a registrar o actualizar.
+        */
         public void Registrar(Usuario objUsuario)
         {
             try
@@ -63,7 +72,12 @@ namespace EsTacna.Repositories
             }
         }
 
-        /// <inheritdoc />
+        /**
+        * Realiza el login de un usuario con su cuenta y contraseña.
+        * @param usuarioCuenta Correo electrónico del usuario.
+        * @param contrasenaCuenta Contraseña del usuario.
+        * @return Objeto Usuario correspondiente a la cuenta y contraseña proporcionadas.
+        */
         public Usuario Login(string usuarioCuenta, string contrasenaCuenta)
         {
             Usuario objUsuario = new Usuario();
@@ -79,7 +93,11 @@ namespace EsTacna.Repositories
             return objUsuario;
         }
 
-        /// <inheritdoc />
+        /**
+        * Busca un usuario por su ID.
+        * @param usuarioId ID del usuario.
+        * @return Objeto Usuario correspondiente al ID proporcionado.
+        */
         public Usuario BuscarId(int usuarioId)
         {
             Usuario objUsuario = new Usuario();
@@ -96,33 +114,47 @@ namespace EsTacna.Repositories
         }
     }
 
-    /// <summary>
-    /// Define la interfaz para la unidad de trabajo.
-    /// </summary>
+    /**
+    * Interface para el patrón UnitOfWork.
+    */
     public interface IUnitOfWork : IDisposable
     {
+        /**
+        * Repositorio de usuarios.
+        * @return Instancia del repositorio de usuarios.
+        */
         UsuarioRepository UsuarioRepositoryimpl { get; }
+
+        /**
+        * Guarda los cambios en el contexto de base de datos.
+        */
         void SaveChanges();
     }
 
-    /// <summary>
-    /// Implementación de la unidad de trabajo.
-    /// </summary>
+    /**
+    * Implementación del patrón UnitOfWork.
+    */
     public class UnitOfWork : IUnitOfWork
     {
+        /** Contexto de base de datos de EsTacna */
         private readonly EsTacnaContext _dbContext;
+
+        /** Repositorio de usuarios */
         private UsuarioRepository _usuarioRepository;
 
-        /// <summary>
-        /// Constructor de la clase UnitOfWork.
-        /// </summary>
-        /// <param name="dbContext">Contexto de base de datos para acceder a las entidades.</param>
+        /**
+        * Constructor que inicializa el contexto de base de datos.
+        * @param dbContext Contexto de base de datos de EsTacna.
+        */
         public UnitOfWork(EsTacnaContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        /// <inheritdoc />
+        /**
+        * Repositorio de usuarios.
+        * @return Instancia del repositorio de usuarios.
+        */
         public UsuarioRepository UsuarioRepositoryimpl
         {
             get
@@ -135,13 +167,17 @@ namespace EsTacna.Repositories
             }
         }
 
-        /// <inheritdoc />
+        /**
+        * Guarda los cambios en el contexto de base de datos.
+        */
         public void SaveChanges()
         {
             _dbContext.SaveChanges();
         }
 
-        /// <inheritdoc />
+        /**
+        * Libera los recursos utilizados por el contexto de base de datos.
+        */
         public void Dispose()
         {
             _dbContext.Dispose();

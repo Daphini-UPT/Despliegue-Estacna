@@ -1,0 +1,90 @@
+﻿@model AdminEsTacna.ViewModels.EstablecimientoSaludViewModel
+@{
+    ViewData["Title"] = "Agregar Clínicas a EPS";
+}
+
+<body style="padding:0; margin:0;">
+    <h1 style="color:#287D97" align="center">Mantenimiento de Clínicas y EPS</h1>
+    </br>
+
+    <!-- Mensajes de éxito y error -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    @foreach (var eps in Model.listEps)
+    {
+        <label class="fw-bold" style="color:#287D97">@eps.Nombre</label>
+        <table class="table table-striped table-bordered table-hover" align="center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.EstablishmentsByEps.ContainsKey(eps.Id))
+                {
+                    @foreach (var clinica in Model.EstablishmentsByEps[eps.Id])
+                    {
+                        <tr>
+                            <td>@clinica.Id</td>
+                            <td>@clinica.Nombre</td>
+                            <td>
+                                <a class="btn btn-danger btn-sm" href="#">Borrar</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <br />
+        <label class="fw-bold" style="color:#287D97">Agregue nueva Clínica</label>
+        <form method="post" action="@Url.Action("AgregarClinicaEps", "Eps")">
+            <div class="d-flex align-items-center mb-3">
+                <div class="m-3">
+                    @Html.DropDownList("clinicaId", Model.SelectListClinicas, "Seleccione Clínica", new { @class = "form-control" })
+                </div>
+                <input type="hidden" name="epsId" value="@eps.Id" />
+                <div class="text-center form-group gap-2">
+                    <input type="submit" value="Registrar" class="btn btn-success btn-sm" />
+                </div>
+            </div>
+        </form>
+        <hr />
+    }
+
+    <!-- Paginación -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            @if (Model.PaginaActual > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("AgregarClinica", new { pagina = Model.PaginaActual - 1 })">Anterior</a>
+                </li>
+            }
+            @for (int i = 1; i <= Math.Ceiling((double)Model.TotalElementos / Model.ElementosPorPagina); i++)
+            {
+                <li class="page-item @(i == Model.PaginaActual ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("AgregarClinica", new { pagina = i })">@i</a>
+                </li>
+            }
+            @if (Model.PaginaActual < Math.Ceiling((double)Model.TotalElementos / Model.ElementosPorPagina))
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("AgregarClinica", new { pagina = Model.PaginaActual + 1 })">Siguiente</a>
+                </li>
+            }
+        </ul>
+    </nav>
+</body>
