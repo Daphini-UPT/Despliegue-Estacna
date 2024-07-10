@@ -18,12 +18,20 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\JPazo\source\repos\AdminEsTacna
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/JPazo/source/repos/AdminEsTacna/Views/Clinicas/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljYXNcRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/JPazo/source/repos/AdminEsTacna/Views/Clinicas/RegistrarClinicas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljYXNcUmVnaXN0cmFyQ2xpbmljYXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/JPazo/source/repos/AdminEsTacna/Views/Clinicas/VerClinicas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpbmljYXNcVmVyQ2xpbmljYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/JPazo/source/repos/AdminEsTacna/Views/Eps/AgregarClinica.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXBzXEFncmVnYXJDbGluaWNhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/JPazo/source/repos/AdminEsTacna/Views/Eps/RegistrarEps.cshtml]

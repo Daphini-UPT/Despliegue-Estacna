@@ -92,6 +92,11 @@
             </div>
             <div id="map" class="form-group row gap-5 d-flex justify-content-between"></div>
             <div class="form-group mb-3">
+                <label asp-for="@Model.Descripcion" class="control-label" style="color:#287D97"></label>
+                <input id="descripcionInput" asp-for="@Model.Descripcion" class="form-control" disabled />
+                <span asp-validation-for="@Model.Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
                 <label asp-for="Imagen" class="control-label" style="color:#287D97"></label>
                 <input id="imagenInput" asp-for="Imagen" value="@Model.Imagen" class="form-control" disabled />
                 <span asp-validation-for="Imagen" class="text-danger"></span>
@@ -109,9 +114,11 @@
     function habilitarEdicion() {
         var direccionInput = document.getElementById("direccionInput");
         var imagenInput = document.getElementById("imagenInput");
+        var descripcionInput = document.getElementById("descripcionInput");
         var guardarButton = document.getElementById("guardarButton");
 
         direccionInput.disabled = false;
+        descripcionInput.disabled = false;
         imagenInput.disabled = false;
         guardarButton.removeAttribute("disabled");
     }

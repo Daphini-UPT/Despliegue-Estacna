@@ -3,7 +3,57 @@
     ViewData["Title"] = "Registrar Clinica";
     List<AdminEsTacna.Models.EstablecimientoSalud> clinicas = ViewBag.Clinica;
 }
+@section scripts {
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script>
+        async function initMap() {
 
+            const { Map, InfoWindow } = await google.maps.importLibrary("maps");
+            const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+            const initialLat = parseFloat('﻿-18.0147972'.replace(',', '.'));
+            const initialLng = parseFloat('-70.2523199'.replace(',', '.'));
+
+            const map = new Map(document.getElementById('map'), {
+                center: { lat: initialLat, lng: initialLng },
+                zoom: 15,
+                mapId: '4504f8b37365c3d0',
+            });
+
+            const infoWindow = new InfoWindow();
+
+            const draggableMarker = new AdvancedMarkerElement({
+                map,
+                position: { lat: initialLat, lng: initialLng },
+                gmpDraggable: true,
+                title: "This marker is draggable.",
+            });
+
+            draggableMarker.addListener('dragend', (event) => {
+                const position = draggableMarker.position;
+                const lat = position.lat;
+                const lng = position.lng;
+                document.getElementById('latitudInput').value = lat.toFixed(6);
+                document.getElementById('longitudInput').value = lng.toFixed(6);
+                infoWindow.close();
+                infoWindow.setContent(`Pin dropped at: ${lat.toFixed(6)}, ${lng.toFixed(6)}`);
+                infoWindow.open(draggableMarker.map, draggableMarker);
+            });
+        }
+        window.initMap = initMap;
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChAH9wpFyxHUnjj_1wYVp5ktGZE2InGZU&callback=initMap"
+            defer></script>
+}
+
+@section style {
+    <style>
+        #map {
+            width: 100%;
+            height: 50vh
+        }
+    </style>
+}
 <div class=" row justify-content-center">
     <div class="col-lg-6">
         <h1 class="text-center fw-bold mb-4" style="color:#287D97">Registrar Clinica</h1>
@@ -26,15 +76,16 @@
                 <span asp-validation-for="@Model.Direccion" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <label asp-for="@Model.Longitud" class="control-label" style="color:#287D97"></label>
-                <input asp-for="@Model.Longitud" class="form-control" />
+                <label asp-for="@Model.Longitud" class="control-label" style="color:#287D97" ></label>
+                <input id="longitudInput" asp-for="@Model.Longitud" class="form-control" disabled />
                 <span asp-validation-for="@Model.Longitud" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <label asp-for="@Model.Latitud" class="control-label" style="color:#287D97"></label>
-                <input asp-for="@Model.Latitud" class="form-control" />
+                <label asp-for="@Model.Latitud" class="control-label" style="color:#287D97" ></label>
+                <input id="latitudInput" asp-for="@Model.Latitud" class="form-control" disabled />
                 <span asp-validation-for="@Model.Latitud" class="text-danger"></span>
             </div>
+            <div id="map" class="form-group row gap-5 d-flex justify-content-between"></div>
             <div class="form-group mb-3">
                 <label asp-for="@Model.Descripcion" class="control-label" style="color:#287D97"></label>
                 <input asp-for="@Model.Descripcion" class="form-control" />

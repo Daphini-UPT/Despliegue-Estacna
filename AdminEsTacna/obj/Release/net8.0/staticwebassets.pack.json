@@ -185,6 +185,14 @@
       "PackagePath": "staticwebassets\\DataTables\\datatables.min.js"
     },
     {
+      "Id": "C:\\Users\\JPazo\\source\\repos\\AdminEsTacna\\wwwroot\\css\\bootstrap-multiselect.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap-multiselect.css"
+    },
+    {
+      "Id": "C:\\Users\\JPazo\\source\\repos\\AdminEsTacna\\wwwroot\\css\\bootstrap-multiselect.js",
+      "PackagePath": "staticwebassets\\css\\bootstrap-multiselect.js"
+    },
+    {
       "Id": "C:\\Users\\JPazo\\source\\repos\\AdminEsTacna\\wwwroot\\css\\estilos.css",
       "PackagePath": "staticwebassets\\css\\estilos.css"
     },
@@ -283,6 +291,14 @@
     {
       "Id": "C:\\Users\\JPazo\\source\\repos\\AdminEsTacna\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\JPazo\\source\\repos\\AdminEsTacna\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-multiselect.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-multiselect.css"
+    },
+    {
+      "Id": "C:\\Users\\JPazo\\source\\repos\\AdminEsTacna\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-multiselect.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-multiselect.js"
     },
     {
       "Id": "C:\\Users\\JPazo\\source\\repos\\AdminEsTacna\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
